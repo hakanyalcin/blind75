@@ -13,7 +13,7 @@ func twoSum(nums []int, target int) []int {
 	i, j := 0, 0
 	res := []int{}
 	for i = 0; i < len(nums); i++ {
-		for j = i + i; j < len(nums)-1; j++ {
+		for j = i + i; j < len(nums); j++ {
 			if nums[i]+nums[j] == target {
 				res = append(res, nums[i])
 				res = append(res, nums[j])
