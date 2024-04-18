@@ -10,16 +10,41 @@ func main() {
 }
 
 func twoSum(nums []int, target int) []int {
-	i, j := 0, 0
-	res := []int{}
-	for i = 0; i < len(nums); i++ {
-		for j = i + i; j < len(nums); j++ {
+	for i := 0; i < len(nums); i++ {
+		for j := i + 1; j < len(nums); j++ {
 			if nums[i]+nums[j] == target {
-				res = append(res, nums[i])
-				res = append(res, nums[j])
-				return res
+				return []int{i, j}
 			}
 		}
 	}
-	return res
+	return nil
+}
+
+func twoSumV2(nums []int, target int) []int {
+	m := make(map[int]int)
+
+	for i, num := range nums {
+		m[num] = i
+	}
+
+	for i, num := range nums {
+		complement := target - num
+		if j, ok := m[complement]; ok && j != i {
+			return []int{i, j}
+		}
+	}
+	return nil
+}
+
+func twoSumV3(nums []int, target int) []int {
+	m := make(map[int]int)
+
+	for i, num := range nums {
+		x := target - num
+		if j, ok := m[x]; ok {
+			return []int{j, i}
+		}
+		m[num] = i
+	}
+	return nil
 }
