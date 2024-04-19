@@ -48,3 +48,16 @@ func twoSumV3(nums []int, target int) []int {
 	}
 	return nil
 }
+
+func practiceA(nums []int, target int) []int {
+	m := make(map[int]int)
+
+	for i, num := range nums {
+		val, ok := m[target-num]
+		if ok {
+			return []int{val, i}
+		}
+		m[num] = i
+	}
+	return nil
+}
